@@ -92,7 +92,6 @@ def pp_analysis(info_list, pp, pisavar_method):
             ssidList[ssid] = 1
         else:
             ssidList[ssid] += 1
-            if ssidList[ssid] > 1:
             print "There is {} addresses for {}".format(ssidList[ssid],ssid)
 
     """
