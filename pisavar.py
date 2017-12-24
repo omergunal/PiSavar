@@ -80,6 +80,7 @@ def pp_analysis(info_list, pp, pisavar_method):
     """
     Analysis air_scan result for pineAP Suite detection
     """
+    ssidList = {}
     for i in info_list:
         bssid, ssid= i.split("=*=")
         if bssid not in pp.keys():
@@ -87,6 +88,12 @@ def pp_analysis(info_list, pp, pisavar_method):
             pp[bssid].append(ssid)
         elif bssid in pp.keys() and ssid not in pp[bssid]:
             pp[bssid].append(ssid)
+	if ssid not in ssidList:
+            ssidList[ssid] = 1
+        else:
+            ssidList[ssid] += 1
+            if ssidList[ssid] > 1:
+            print "There is {} addresses for {}".format(ssidList[ssid],ssid)
 
     """
     Detects networks opened by PineAP Suite.
